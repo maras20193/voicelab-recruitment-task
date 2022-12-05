@@ -1,11 +1,12 @@
 import { ThemeProvider } from "styled-components";
+import { CharactersPage } from "./pages";
 import { GlobalStyle, theme } from "./styles";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div>voicelab recruitment task</div>
+      <CharactersPage />
     </ThemeProvider>
   );
 }
