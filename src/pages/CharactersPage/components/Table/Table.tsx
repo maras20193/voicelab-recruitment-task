@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTable, Column } from "react-table";
 import { aliveStatus, deadStatus, unknownStatus } from "../../../../assets";
+import * as S from "./Table.styled";
 
 type CharactersTableProps = {
   data: ICharacter[];
@@ -24,18 +25,16 @@ const columns: Column<ICharacter>[] = [
     Header: "Name",
     accessor: "name",
     Cell: ({ row }) => (
-      <div>
+      <S.NameWrapper>
         <p>{row.original.name}</p>
         <p>{row.original.species}</p>
-      </div>
+      </S.NameWrapper>
     ),
   },
   {
     Header: "Avatar",
     accessor: "image",
-    Cell: ({ value }) => (
-      <img style={{ width: "60px" }} src={value} alt="avatar" />
-    ),
+    Cell: ({ value }) => <S.ImageWrapper imgUrl={value} />,
   },
   {
     Header: "Origin",
@@ -49,17 +48,17 @@ const columns: Column<ICharacter>[] = [
     Header: "Status",
     accessor: "status",
     Cell: ({ row }) => (
-      <div>
+      <S.StatusWrapper isStatusUnknown={row.original.status === "unknown"}>
         <img src={getStatusIcon(row.original.status)} alt="" />
         <p>{row.original.status}</p>
-      </div>
+      </S.StatusWrapper>
     ),
   },
 ];
 
 export const Table = ({ data }: CharactersTableProps) => {
-  const tableData = useMemo(() => data, []);
-  const tableColumns = useMemo(() => columns, []);
+  const tableData = useMemo(() => data, [data]);
+  const tableColumns = useMemo(() => columns, [columns]);
 
   const tableInstance = useTable({ columns: tableColumns, data: tableData });
 
@@ -67,30 +66,39 @@ export const Table = ({ data }: CharactersTableProps) => {
     tableInstance;
 
   return (
-    <div>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+    <S.Table {...getTableProps()}>
+      <S.THead>
+        {headerGroups.map((headerGroup) => (
+          <S.THeadRow {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map((column) => (
+              <S.THeader {...column.getHeaderProps()}>
+                {column.render("Header")}
+              </S.THeader>
+            ))}
+          </S.THeadRow>
+        ))}
+      </S.THead>
+      <S.TBody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <S.TRow
+              isStatusUnknown={row.original.status === "unknown"}
+              {...row.getRowProps()}
+            >
+              {row.cells.map((cell) => (
+                <S.TCell
+                  isCellUnknown={cell.value === "unknown"}
+                  isStatusUnknown={row.original.status === "unknown"}
+                  {...cell.getCellProps()}
+                >
+                  {cell.render("Cell")}
+                </S.TCell>
               ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            </S.TRow>
+          );
+        })}
+      </S.TBody>
+    </S.Table>
   );
 };

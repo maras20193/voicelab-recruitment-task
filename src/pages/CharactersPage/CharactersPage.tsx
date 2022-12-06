@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCharacters } from "../../api";
+import { Table } from "./components/Table/Table";
+import * as S from "./CharactersPage.styled";
 
 export const CharactersPage = () => {
   /* eslint-disable no-console, @typescript-eslint/no-explicit-any  */
-  const [characters, setCharacters] = useState<any[]>([]);
+  const [characters, setCharacters] = useState<ICharacter[]>([]);
+
+  console.log(characters);
 
   const fetchCharacters = async () => {
     try {
@@ -13,15 +17,15 @@ export const CharactersPage = () => {
       console.log(error);
     }
   };
-  console.log(characters);
 
   useEffect(() => {
     fetchCharacters();
   }, []);
 
   return (
-    <div>
-      <p>characters</p>
-    </div>
+    <S.Wrapper>
+      <S.Header>Characters</S.Header>
+      {characters && <Table data={characters} />}
+    </S.Wrapper>
   );
 };

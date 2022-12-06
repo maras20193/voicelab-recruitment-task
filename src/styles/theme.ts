@@ -16,6 +16,8 @@ export const theme = {
     primary10: "#EEF1F5",
     primary5: "#F6F8FA",
 
+    background: "#F5F8FD",
+
     error: "#FF2626",
   },
 };
