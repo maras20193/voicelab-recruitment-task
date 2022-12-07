@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCharacters } from "../../../../api";
 import { Dropdown, Pagination, SearchBar, Table } from "./components";
 import * as S from "./CharactersTable.styled";
+import { useDebounce } from "../../../../hooks/useDebounce";
 
 export const CharactersTable = () => {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
@@ -9,6 +10,8 @@ export const CharactersTable = () => {
   const [pages, setPages] = useState<number>(0);
   const [filterSpecies, setFilterSpecies] = useState<string>("");
   const [filterName, setFilterName] = useState<string>("");
+
+  const debouncedFilterName = useDebounce(filterName, 500);
 
   const fetchCharacters = async (
     page: number,
@@ -27,7 +30,7 @@ export const CharactersTable = () => {
 
   useEffect(() => {
     fetchCharacters(currentPage, filterSpecies, filterName);
-  }, [currentPage, filterName, filterSpecies]);
+  }, [currentPage, debouncedFilterName, filterSpecies]);
 
   return (
     <S.Wrapper>
