@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   width: 140px;
+  height: 40px;
   background-color: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.primary40};
   border-radius: 5px;
@@ -18,7 +19,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-  height: 40px;
+  height: 100%;
   width: 100%;
   background-color: transparent;
   outline: none;

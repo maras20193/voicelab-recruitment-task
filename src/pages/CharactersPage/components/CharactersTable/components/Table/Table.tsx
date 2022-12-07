@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTable, usePagination, Column } from "react-table";
+import { useTable, Column } from "react-table";
 import {
   aliveStatus,
   deadStatus,
@@ -66,13 +66,10 @@ export const Table = ({ data, currentPage, pages }: CharactersTableProps) => {
   const tableData = useMemo(() => data, [data]);
   const tableColumns = useMemo(() => columns, [columns]);
 
-  const tableInstance = useTable(
-    {
-      columns: tableColumns,
-      data: tableData,
-    },
-    usePagination
-  );
+  const tableInstance = useTable({
+    columns: tableColumns,
+    data: tableData,
+  });
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;

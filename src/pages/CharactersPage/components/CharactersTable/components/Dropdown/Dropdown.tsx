@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import Select, { MultiValue } from "react-select";
+import Select, { MultiValue, components } from "react-select";
+import * as S from "./Dropdown.styled";
 
 const options = [
   { value: "Alien", label: "Alien" },
@@ -17,6 +18,22 @@ const options = [
 type DropdownProps = {
   setFilterSpecies: Dispatch<SetStateAction<string>>;
 };
+/* eslint-disable react/destructuring-assignment  */
+/* eslint-disable jsx-a11y/label-has-associated-control  */
+const Option = (props: any) => (
+  <div>
+    <components.Option {...props}>
+      <input type="checkbox" checked={props.isSelected} onChange={() => null} />{" "}
+      <label>{props.label}</label>
+    </components.Option>
+  </div>
+);
+
+// const DropdownIndicator = (props: any) => (
+//   <components.DropdownIndicator {...props}>
+//     {/* <img src={arrow} alt="arrow" /> */}
+//   </components.DropdownIndicator>
+// );
 
 export const Dropdown = ({ setFilterSpecies }: DropdownProps) => {
   const handleChange = (
@@ -26,9 +43,17 @@ export const Dropdown = ({ setFilterSpecies }: DropdownProps) => {
     const filter = `${allOptions.join("&species=")}`;
     setFilterSpecies(filter);
   };
+
   return (
-    <div>
-      <Select options={options} onChange={handleChange} isMulti />
-    </div>
+    <S.Wrapper>
+      <Select
+        options={options}
+        onChange={handleChange}
+        isMulti
+        styles={S.colorStyles}
+        components={{ Option }}
+        placeholder="Species"
+      />
+    </S.Wrapper>
   );
 };
