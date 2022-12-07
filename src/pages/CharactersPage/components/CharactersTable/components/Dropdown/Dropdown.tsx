@@ -29,12 +29,6 @@ const Option = (props: any) => (
   </div>
 );
 
-// const DropdownIndicator = (props: any) => (
-//   <components.DropdownIndicator {...props}>
-//     {/* <img src={arrow} alt="arrow" /> */}
-//   </components.DropdownIndicator>
-// );
-
 export const Dropdown = ({ setFilterSpecies }: DropdownProps) => {
   const handleChange = (
     selectedOptions: MultiValue<{ value: string; label: string }>

@@ -5,25 +5,16 @@ export const Table = styled.table`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
   box-shadow: 0px 2px 18px 0px #dde3ec;
-
   border-collapse: separate;
-  /* border-spacing: 5px; */
-
   color: ${({ theme }) => theme.colors.text100};
-
-  /* padding-left: 16px;
-  padding-right: 16px; */
 `;
 
 export const THead = styled.thead`
   height: 42px;
   color: ${({ theme }) => theme.colors.text80};
-  /* border-bottom: 1px solid ${({ theme }) => theme.colors.primary30}; */
 `;
 
-export const THeadRow = styled.tr`
-  /* border-bottom: 1px solid ${({ theme }) => theme.colors.primary30}; */
-`;
+export const THeadRow = styled.tr``;
 
 export const THeader = styled.th`
   font-size: 14px;

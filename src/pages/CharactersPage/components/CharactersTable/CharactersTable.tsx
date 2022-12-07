@@ -7,9 +7,7 @@ export const CharactersTable = () => {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pages, setPages] = useState<number>(0);
-  const [filterSpecies, setFilterSpecies] = useState<string>(
-    "Alien&species=Human"
-  );
+  const [filterSpecies, setFilterSpecies] = useState<string>("");
   const [filterName, setFilterName] = useState<string>("");
 
   const fetchCharacters = async (
@@ -30,6 +28,7 @@ export const CharactersTable = () => {
   useEffect(() => {
     fetchCharacters(currentPage, filterSpecies, filterName);
   }, [currentPage, filterName, filterSpecies]);
+
   return (
     <S.Wrapper>
       <S.FiltersWrapper>
