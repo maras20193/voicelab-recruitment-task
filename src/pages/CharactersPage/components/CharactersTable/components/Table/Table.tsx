@@ -1,6 +1,10 @@
 import { useMemo } from "react";
 import { useTable, usePagination, Column } from "react-table";
-import { aliveStatus, deadStatus, unknownStatus } from "../../../../assets";
+import {
+  aliveStatus,
+  deadStatus,
+  unknownStatus,
+} from "../../../../../../assets";
 import * as S from "./Table.styled";
 
 type CharactersTableProps = {
