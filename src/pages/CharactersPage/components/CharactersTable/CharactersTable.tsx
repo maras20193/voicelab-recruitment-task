@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCharacters } from "../../../../api";
 import { Dropdown, Pagination, SearchBar, Table } from "./components";
+import * as S from "./CharactersTable.styled";
 
 export const CharactersTable = () => {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
@@ -30,13 +31,15 @@ export const CharactersTable = () => {
     fetchCharacters(currentPage, filterSpecies, filterName);
   }, [currentPage, filterName, filterSpecies]);
   return (
-    <div>
-      <SearchBar setFilterName={setFilterName} />
-      <Dropdown setFilterSpecies={setFilterSpecies} />
+    <S.Wrapper>
+      <S.FiltersWrapper>
+        <SearchBar setFilterName={setFilterName} />
+        <Dropdown setFilterSpecies={setFilterSpecies} />
+      </S.FiltersWrapper>
       {characters && (
         <Table data={characters} currentPage={currentPage} pages={pages} />
       )}
       <Pagination setCurrentPage={setCurrentPage} totalPages={pages} />
-    </div>
+    </S.Wrapper>
   );
 };
