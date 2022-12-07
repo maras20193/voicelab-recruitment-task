@@ -1,10 +1,12 @@
 import { useMemo } from "react";
-import { useTable, Column } from "react-table";
+import { useTable, usePagination, Column } from "react-table";
 import { aliveStatus, deadStatus, unknownStatus } from "../../../../assets";
 import * as S from "./Table.styled";
 
 type CharactersTableProps = {
   data: ICharacter[];
+  currentPage: number;
+  pages: number;
 };
 
 const getStatusIcon = (status: string) => {
@@ -56,11 +58,17 @@ const columns: Column<ICharacter>[] = [
   },
 ];
 
-export const Table = ({ data }: CharactersTableProps) => {
+export const Table = ({ data, currentPage, pages }: CharactersTableProps) => {
   const tableData = useMemo(() => data, [data]);
   const tableColumns = useMemo(() => columns, [columns]);
 
-  const tableInstance = useTable({ columns: tableColumns, data: tableData });
+  const tableInstance = useTable(
+    {
+      columns: tableColumns,
+      data: tableData,
+    },
+    usePagination
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;

@@ -1,3 +1,4 @@
 import { api } from "./apiConfig";
 
-export const getCharacters = () => api.get("/character");
+export const getCharacters = (page: number) =>
+  api.get(`/character?page=${page}`);

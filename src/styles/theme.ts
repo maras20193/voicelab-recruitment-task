@@ -17,7 +17,12 @@ export const theme = {
     primary5: "#F6F8FA",
 
     background: "#F5F8FD",
+    disabled: "#dddddd",
 
     error: "#FF2626",
+  },
+
+  shadows: {
+    pagination: "0px 2px 4px #dde3ec",
   },
 };
