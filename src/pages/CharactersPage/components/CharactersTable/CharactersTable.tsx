@@ -38,9 +38,7 @@ export const CharactersTable = () => {
         <SearchBar setFilterName={setFilterName} />
         <Dropdown setFilterSpecies={setFilterSpecies} />
       </S.FiltersWrapper>
-      {characters && (
-        <Table data={characters} currentPage={currentPage} pages={pages} />
-      )}
+      {characters && <Table data={characters} />}
       <Pagination setCurrentPage={setCurrentPage} totalPages={pages} />
     </S.Wrapper>
   );

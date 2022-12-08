@@ -9,8 +9,6 @@ import * as S from "./Table.styled";
 
 type CharactersTableProps = {
   data: ICharacter[];
-  currentPage: number;
-  pages: number;
 };
 
 const getStatusIcon = (status: string) => {
@@ -77,7 +75,7 @@ const tableHooks = (hooks: any) => {
   ]);
 };
 
-export const Table = ({ data, currentPage, pages }: CharactersTableProps) => {
+export const Table = ({ data }: CharactersTableProps) => {
   const tableData = useMemo(() => data, [data]);
   const tableColumns = useMemo(() => columns, [columns]);
 
