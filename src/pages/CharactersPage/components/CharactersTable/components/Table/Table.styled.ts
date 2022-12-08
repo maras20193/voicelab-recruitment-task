@@ -55,10 +55,15 @@ export const TCell = styled.td<{
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary15};
 
   width: 162px;
+  max-width: 162px;
 
   font-weight: 400;
   font-size: 15px;
   line-height: 130%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   /// Figma design don't show case when status is unknown and cell value is unknown
   color: ${({ theme, isCellUnknown }) =>
@@ -68,6 +73,7 @@ export const TCell = styled.td<{
 
   &:nth-child(1) {
     width: 231px;
+    max-width: 231px;
     padding-left: 24px;
   }
 
@@ -95,6 +101,9 @@ export const NameWrapper = styled.div`
 
   p:nth-child(1) {
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
@@ -104,4 +113,13 @@ export const StatusWrapper = styled.div<{ isStatusUnknown: boolean }>`
 
   color: ${({ theme, isStatusUnknown }) =>
     isStatusUnknown ? theme.colors.text70 : theme.colors.text100};
+`;
+
+export const OriginWrapper = styled.div`
+  position: relative;
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;

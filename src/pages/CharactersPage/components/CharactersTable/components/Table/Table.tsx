@@ -31,7 +31,7 @@ const columns: Column<ICharacter>[] = [
     Header: "Name",
     accessor: "name",
     Cell: ({ row }) => (
-      <S.NameWrapper>
+      <S.NameWrapper title={row.original.name}>
         <p>{row.original.name}</p>
         <p>{row.original.species}</p>
       </S.NameWrapper>
@@ -44,7 +44,12 @@ const columns: Column<ICharacter>[] = [
   },
   {
     Header: "Origin",
-    accessor: (data) => data.origin.name,
+    accessor: "origin",
+    Cell: ({ row }) => (
+      <S.OriginWrapper>
+        <p title={row.original.origin.name}>{row.original.origin.name}</p>
+      </S.OriginWrapper>
+    ),
   },
   {
     Header: "Gender",
