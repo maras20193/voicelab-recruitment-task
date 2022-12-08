@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Table = styled.table`
-  width: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
   box-shadow: 0px 2px 18px 0px #dde3ec;
@@ -25,8 +24,12 @@ export const THeader = styled.th`
 
   padding-left: 50px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary30};
-
   &:nth-child(1) {
+    width: 42px;
+    padding-left: 24px;
+  }
+
+  &:nth-child(2) {
     width: 231px;
     padding-left: 24px;
   }
@@ -72,6 +75,11 @@ export const TCell = styled.td<{
     isCellUnknown && isStatusUnknown ? theme.colors.text25 : null};
 
   &:nth-child(1) {
+    width: 42px;
+    padding-left: 24px;
+  }
+
+  &:nth-child(2) {
     width: 231px;
     max-width: 231px;
     padding-left: 24px;
@@ -121,5 +129,22 @@ export const OriginWrapper = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+`;
+
+export const Input = styled.input`
+  width: 18px;
+  height: 18px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.primary40};
+  border-radius: 2px;
+
+  :hover {
+    background-color: red;
+    color: blue;
+  }
+
+  :checked {
+    background-color: red;
   }
 `;

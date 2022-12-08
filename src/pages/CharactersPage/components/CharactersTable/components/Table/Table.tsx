@@ -67,14 +67,27 @@ const columns: Column<ICharacter>[] = [
   },
 ];
 
+const tableHooks = (hooks: any) => {
+  hooks.visibleColumns.push((columnsH: any) => [
+    {
+      Header: () => <S.Input type="checkbox" />,
+      Cell: () => <S.Input type="checkbox" />,
+    },
+    ...columnsH,
+  ]);
+};
+
 export const Table = ({ data, currentPage, pages }: CharactersTableProps) => {
   const tableData = useMemo(() => data, [data]);
   const tableColumns = useMemo(() => columns, [columns]);
 
-  const tableInstance = useTable({
-    columns: tableColumns,
-    data: tableData,
-  });
+  const tableInstance = useTable(
+    {
+      columns: tableColumns,
+      data: tableData,
+    },
+    tableHooks
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
