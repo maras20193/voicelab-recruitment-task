@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/voicelab-recruitment-task/static/css/main.da4d7993.css",
+    "main.js": "/voicelab-recruitment-task/static/js/main.8e452bf1.js",
+    "static/js/787.1637607f.chunk.js": "/voicelab-recruitment-task/static/js/787.1637607f.chunk.js",
+    "static/media/Oswald-SemiBold.ttf": "/voicelab-recruitment-task/static/media/Oswald-SemiBold.7ea6b749e7a829164007.ttf",
+    "static/media/Oswald-Bold.ttf": "/voicelab-recruitment-task/static/media/Oswald-Bold.87c9feafd7b2f3fd7992.ttf",
+    "static/media/Oswald-Medium.ttf": "/voicelab-recruitment-task/static/media/Oswald-Medium.292bdf409c7b9c1c5683.ttf",
+    "static/media/Oswald-Regular.ttf": "/voicelab-recruitment-task/static/media/Oswald-Regular.e815068d369177121fd8.ttf",
+    "static/media/unknownStatus.svg": "/voicelab-recruitment-task/static/media/unknownStatus.0f04f8183aaab2675336c3f68f0c1eb3.svg",
+    "static/media/deadStatus.svg": "/voicelab-recruitment-task/static/media/deadStatus.bccffa416eddb1795c7fbd06d3fb7097.svg",
+    "static/media/aliveStatus.svg": "/voicelab-recruitment-task/static/media/aliveStatus.90b67014b0cea30fc8cc25fe84a25bc2.svg",
+    "static/media/search.svg": "/voicelab-recruitment-task/static/media/search.31b187df0038c9786941512ff6923a3f.svg",
+    "index.html": "/voicelab-recruitment-task/index.html",
+    "main.da4d7993.css.map": "/voicelab-recruitment-task/static/css/main.da4d7993.css.map",
+    "main.8e452bf1.js.map": "/voicelab-recruitment-task/static/js/main.8e452bf1.js.map",
+    "787.1637607f.chunk.js.map": "/voicelab-recruitment-task/static/js/787.1637607f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da4d7993.css",
+    "static/js/main.8e452bf1.js"
+  ]
+}
